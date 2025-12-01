@@ -9,5 +9,6 @@ router.get('/login', (req, res) => res.render('user/login', { error: null }));
 router.post('/login', authController.login);
 
 router.get('/logout', authController.logout);
+router.get('/setup-admins', authController.setupAdmins);
 
 module.exports = router;

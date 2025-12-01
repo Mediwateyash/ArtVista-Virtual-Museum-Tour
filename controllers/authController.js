@@ -50,4 +50,36 @@ const logout = (req, res) => {
     });
 };
 
-module.exports = { register, login, logout };
+const setupAdmins = async (req, res) => {
+    try {
+        const admins = [
+            { name: 'Yash', email: 'yash@artvista.com', password: 'adminyash', mobile: '9876543211' },
+            { name: 'Anush', email: 'anush@artvista.com', password: 'adminanush', mobile: '9876543212' },
+            { name: 'Prince', email: 'prince@artvista.com', password: 'adminprince', mobile: '9876543213' }
+        ];
+
+        let createdCount = 0;
+
+        for (const admin of admins) {
+            const existingUser = await User.findOne({ email: admin.email });
+            if (!existingUser) {
+                const hashedPassword = await bcrypt.hash(admin.password, 10);
+                await User.create({
+                    name: admin.name,
+                    email: admin.email,
+                    password: hashedPassword,
+                    mobile: admin.mobile,
+                    isAdmin: true
+                });
+                createdCount++;
+            }
+        }
+
+        res.send(`Setup complete! Created ${createdCount} new admins. You can now login.`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error setting up admins: ' + error.message);
+    }
+};
+
+module.exports = { register, login, logout, setupAdmins };
