@@ -1,0 +1,159 @@
+<div class="viewer-container">
+    <div class="viewer-header">
+        <div class="progress-container">
+            <span>Item <%= progress.currentIndex + 1 %> of <%= progress.totalItems %></span>
+            <div class="progress-bar">
+                <div class="progress-fill"
+                    style="width: <%= ((progress.currentIndex + 1) / progress.totalItems) * 100 %>%;"></div>
+            </div>
+        </div>
+        <a href="/tour/<%= progress.museumId._id %>" class="btn-secondary btn-sm">Exit Tour</a>
+    </div>
+
+    <div class="artifact-display">
+        <% if (artifact) { %>
+            <div class="artifact-image-container">
+                <img src="<%= artifact.imageUrl %>" alt="<%= artifact.name %>" class="artifact-img">
+            </div>
+            <div class="artifact-info">
+                <h1>
+                    <%= artifact.name %>
+                </h1>
+                <p class="period">Period: <%= artifact.period %>
+                </p>
+                <div class="description">
+                    <p>
+                        <%= artifact.description %>
+                    </p>
+                </div>
+
+                <div class="viewer-controls">
+                    <form action="/tour/prev/<%= progress._id %>" method="POST">
+                        <button type="submit" class="btn-control" <%=isFirst ? 'disabled' : '' %>>Previous</button>
+                    </form>
+
+                    <% if (isLast) { %>
+                        <a href="/tour/<%= progress.museumId._id %>" class="btn-primary">Finish Section</a>
+                        <% } else { %>
+                            <form action="/tour/next/<%= progress._id %>" method="POST">
+                                <button type="submit" class="btn-primary">Next Item</button>
+                            </form>
+                            <% } %>
+                </div>
+            </div>
+            <% } else { %>
+                <div class="no-items">
+                    <h2>No items in this section yet.</h2>
+                    <a href="/tour/<%= progress.museumId._id %>" class="btn-primary">Go Back</a>
+                </div>
+                <% } %>
+    </div>
+</div>
+
+<style>
+    .viewer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 80vh;
+    }
+
+    .viewer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .progress-container {
+        flex: 1;
+        margin-right: 2rem;
+    }
+
+    .progress-bar {
+        height: 10px;
+        background: #e0e0e0;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    .artifact-display {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .artifact-img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .artifact-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+    }
+
+    .period {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .viewer-controls {
+        display: flex;
+        gap: 1rem;
+        margin-top: auto;
+    }
+
+    .btn-control {
+        background: #e0e0e0;
+        color: #333;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .btn-control:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .artifact-display {
+            grid-template-columns: 1fr;
+        }
+
+        .artifact-img {
+            height: 300px;
+        }
+    }
+</style>

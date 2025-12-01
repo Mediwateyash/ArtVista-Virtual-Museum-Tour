@@ -1,0 +1,238 @@
+<div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Step Into the Past, Discover the Wonders of History</h1>
+        <p>Explore the world's finest art and culture from the comfort of your home.</p>
+        <div class="hero-buttons">
+            <% if (user) { %>
+                <a href="/museums" class="btn-primary btn-lg">Start Virtual Tour</a>
+                <% } else { %>
+                    <a href="/auth/register" class="btn-primary btn-lg">Join Now</a>
+                    <a href="/auth/login" class="btn-secondary btn-lg">Login</a>
+                    <% } %>
+        </div>
+    </div>
+</div>
+
+<section class="highlights-section">
+    <div class="container">
+        <h2 class="section-title">Museum Tour Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-icon">🏛️</div>
+                <h3>High-Quality Exhibit Showcases</h3>
+                <p>Experience artifacts in stunning detail with our high-resolution virtual exhibits.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🌐</div>
+                <h3>Real Museum Integrations</h3>
+                <p>Partnered with world-renowned museums to bring you authentic cultural experiences.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🧠</div>
+                <h3>Quizzes & Educational Activities</h3>
+                <p>Test your knowledge and learn more about history through interactive quizzes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="collections-section">
+    <div class="container">
+        <h2 class="section-title">Featured Collections</h2>
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1577720580479-7d839d829c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="European Paintings">
+                <div class="collection-info">
+                    <h3>European Paintings</h3>
+                    <p>Masterpieces from the Renaissance to the 19th century.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Asian Art">
+                <div class="collection-info">
+                    <h3>Asian Art</h3>
+                    <p>Ancient sculptures, ceramics, and paintings from across Asia.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1599940824399-b87987ced72a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Modern Art">
+                <div class="collection-info">
+                    <h3>Modern Art</h3>
+                    <p>Contemporary works that challenge perspective and form.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="container">
+        <h2 class="section-title">Ticket Pricing</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>General Admission</h3>
+                <p class="price">₹500</p>
+                <ul>
+                    <li>Access to all permanent exhibitions</li>
+                    <li>Virtual Tour Access</li>
+                </ul>
+                <a href="/bookings" class="btn-outline">Book Now</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Student Pass</h3>
+                <p class="price">₹250</p>
+                <ul>
+                    <li>Valid student ID required</li>
+                    <li>Access to all exhibitions</li>
+                    <li>Educational resources</li>
+                </ul>
+                <a href="/bookings" class="btn-primary">Book Now</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Foreign Visitors</h3>
+                <p class="price">₹1000</p>
+                <ul>
+                    <li>Priority Entry</li>
+                    <li>Audio Guide Included</li>
+                    <li>Virtual Tour Access</li>
+                </ul>
+                <a href="/bookings" class="btn-outline">Book Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Plan Your Visit Today!</h2>
+        <p>Don't miss out on the opportunity to witness history firsthand.</p>
+        <a href="/bookings" class="btn-primary btn-lg">Book Tickets</a>
+    </div>
+</section>
+
+<style>
+    .hero {
+        height: 80vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-lg {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--secondary-color);
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 1rem auto 0;
+    }
+
+    .features-section {
+        padding: 5rem 2rem;
+        background: #fff;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 10px;
+        transition: transform 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+    }
+
+    .about-section {
+        padding: 5rem 2rem;
+        background: var(--accent-color);
+        text-align: center;
+    }
+
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .about-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: #555;
+    }
+
+    .btn-secondary {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        border: 2px solid var(--secondary-color);
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background: var(--secondary-color);
+        color: #fff;
+    }
+</style>

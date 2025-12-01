@@ -1,0 +1,90 @@
+<div class="admin-container">
+    <div class="header-actions">
+        <h1>Manage Museums</h1>
+        <a href="/admin/museums/add" class="btn-primary">Add New Museum</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% museums.forEach(museum=> { %>
+                    <tr>
+                        <td><img src="<%= museum.imageUrl %>" alt="<%= museum.name %>" class="thumb"></td>
+                        <td>
+                            <%= museum.name %>
+                        </td>
+                        <td>
+                            <%= museum.location %>
+                        </td>
+                        <td>
+                            <a href="/admin/museums/edit/<%= museum._id %>" class="btn-sm edit">Edit</a>
+                            <form action="/admin/museums/<%= museum._id %>?_method=DELETE" method="POST"
+                                style="display:inline;">
+                                <button type="submit" class="btn-sm delete"
+                                    onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .header-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+    .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    .thumb {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .btn-sm {
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    .edit {
+        background: #2196F3;
+        color: #fff;
+    }
+
+    .delete {
+        background: #f44336;
+        color: #fff;
+    }
+</style>

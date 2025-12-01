@@ -1,0 +1,70 @@
+<div class="admin-container">
+    <h1>All Ticket Bookings</h1>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>User</th>
+                    <th>Museum</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% bookings.forEach(booking=> { %>
+                    <tr>
+                        <td>
+                            <%= booking.bookingId %>
+                        </td>
+                        <td>
+                            <%= booking.userId ? booking.userId.name : 'N/A' %>
+                        </td>
+                        <td>
+                            <%= booking.museumId ? booking.museumId.name : 'N/A' %>
+                        </td>
+                        <td>
+                            <%= booking.visitDate.toDateString() %>
+                        </td>
+                        <td>₹<%= booking.totalAmount %>
+                        </td>
+                        <td>
+                            <span class="status-badge <%= booking.status.toLowerCase() %>">
+                                <%= booking.status %>
+                            </span>
+                        </td>
+                        <td>
+                            <% if (booking.status==='Booked' ) { %>
+                                <form action="/admin/bookings/<%= booking._id %>/visited?_method=PUT" method="POST">
+                                    <button type="submit" class="btn-sm edit">Mark Visited</button>
+                                </form>
+                                <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .status-badge {
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .status-badge.booked {
+        background: #e3f2fd;
+        color: #1976d2;
+    }
+
+    .status-badge.visited {
+        background: #e8f5e9;
+        color: #388e3c;
+    }
+</style>

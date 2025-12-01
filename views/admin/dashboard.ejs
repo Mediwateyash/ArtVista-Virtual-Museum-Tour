@@ -1,0 +1,40 @@
+<div class="admin-container">
+    <h1>Admin Dashboard</h1>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p class="stat-number">
+                <%= totalUsers %>
+            </p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Bookings</h3>
+            <p class="stat-number">
+                <%= totalBookings %>
+            </p>
+        </div>
+        <div class="stat-card">
+            <h3>Today's Visitors</h3>
+            <p class="stat-number">
+                <%= todaysVisitors %>
+            </p>
+        </div>
+        <div class="stat-card">
+            <h3>Most Visited Museum</h3>
+            <p class="stat-number">
+                <%= topMuseumName %>
+            </p>
+        </div>
+    </div>
+
+    <div class="admin-actions">
+        <h2>Manage Content</h2>
+        <div class="action-buttons">
+            <a href="/admin/museums" class="btn-admin">Manage Museums</a>
+            <a href="/admin/sections" class="btn-admin">Manage Sections</a>
+            <a href="/admin/artifacts" class="btn-admin">Manage Artifacts</a>
+            <a href="/admin/bookings" class="btn-admin">View Bookings</a>
+        </div>
+    </div>
+</div>

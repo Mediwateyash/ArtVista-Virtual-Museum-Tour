@@ -1,0 +1,97 @@
+<div class="booking-container">
+    <h1>Book Ticket</h1>
+    <h2>
+        <%= museum.name %>
+    </h2>
+
+    <form action="/bookings/book" method="POST" class="booking-form" id="bookingForm">
+        <input type="hidden" name="museumId" value="<%= museum._id %>">
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" value="<%= user.name %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Visit Date</label>
+            <input type="date" name="visitDate" required min="<%= new Date().toISOString().split('T')[0] %>">
+        </div>
+
+        <div class="form-group">
+            <label>Time Slot</label>
+            <select name="timeSlot" required>
+                <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM</option>
+                <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Ticket Type</label>
+            <select name="ticketType" id="ticketType" required onchange="calculateTotal()">
+                <option value="Adult" data-price="500">Adult (₹500)</option>
+                <option value="Student" data-price="200">Student (₹200)</option>
+                <option value="Foreign" data-price="1000">Foreign Tourist (₹1000)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1" required onchange="calculateTotal()">
+        </div>
+
+        <div class="total-section">
+            <h3>Total Amount: <span id="totalAmount">₹500</span></h3>
+        </div>
+
+        <button type="submit" class="btn-primary">Pay Now & Book</button>
+    </form>
+</div>
+
+<script>
+    function calculateTotal() {
+        const typeSelect = document.getElementById('ticketType');
+        const price = typeSelect.options[typeSelect.selectedIndex].dataset.price;
+        const quantity = document.getElementById('quantity').value;
+        const total = price * quantity;
+        document.getElementById('totalAmount').innerText = '₹' + total;
+    }
+</script>
+
+<style>
+    .booking-container {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .booking-container h1 {
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .booking-container h2 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+
+    .booking-form {
+        text-align: left;
+    }
+
+    .total-section {
+        margin: 2rem 0;
+        text-align: center;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        padding: 1rem;
+        background: #f9f9f9;
+        border-radius: 5px;
+    }
+</style>

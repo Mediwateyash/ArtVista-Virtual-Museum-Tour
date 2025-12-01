@@ -1,0 +1,140 @@
+<div class="details-container">
+    <div class="details-header">
+        <img src="<%= museum.imageUrl %>" alt="<%= museum.name %>" class="details-img">
+        <div class="details-info">
+            <h1>
+                <%= museum.name %>
+            </h1>
+            <p class="location-lg">
+                <%= museum.location %>
+            </p>
+            <div class="timings-badge">
+                <span>🕒 Open: <%= museum.timings %></span>
+            </div>
+            <a href="/bookings/book/<%= museum._id %>" class="btn-primary btn-lg">Book Ticket Now</a>
+        </div>
+    </div>
+
+    <div class="details-content">
+        <div class="content-section">
+            <h2>About the Museum</h2>
+            <p>
+                <%= museum.description %>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Why Visit Physically?</h2>
+            <ul class="benefits-list">
+                <li>✨ Experience art in its true scale and texture</li>
+                <li>🗣️ Guided tours by expert curators</li>
+                <li>🏛️ Immerse yourself in the architectural grandeur</li>
+                <li>🎭 Exclusive exhibitions and cultural programs</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-item">🅿️ Parking Available</div>
+                <div class="facility-item">♿ Wheelchair Access</div>
+                <div class="facility-item">🎧 Audio Guides</div>
+                <div class="facility-item">☕ Cafeteria</div>
+                <div class="facility-item">🛍️ Souvenir Shop</div>
+                <div class="facility-item">🚻 Restrooms</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .details-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        min-height: 100vh;
+    }
+
+    .details-header {
+        position: relative;
+        height: 400px;
+    }
+
+    .details-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .details-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+        padding: 2rem;
+        color: #fff;
+    }
+
+    .details-info h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .location-lg {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+    }
+
+    .timings-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(5px);
+    }
+
+    .details-content {
+        padding: 3rem 2rem;
+    }
+
+    .content-section {
+        margin-bottom: 3rem;
+    }
+
+    .content-section h2 {
+        color: var(--secondary-color);
+        border-bottom: 2px solid var(--primary-color);
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .benefits-list {
+        list-style: none;
+    }
+
+    .benefits-list li {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .facilities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .facility-item {
+        background: #f5f5f5;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
+        color: #555;
+    }
+</style>

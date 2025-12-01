@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= typeof title !=='undefined' ? title : 'ArtVista' %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">ArtVista</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <% if (typeof user !=='undefined' && user) { %>
+                <li><a href="/museums">Museums</a></li>
+                <% if (user.isAdmin) { %>
+                    <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+                    <% } %>
+                        <li><a href="/auth/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/auth/login">Login</a></li>
+                            <li><a href="/auth/register">Register</a></li>
+                            <% } %>
+        </ul>
+    </nav>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ArtVista - Sem 6 Mini Project Watumull College of Engineering and Technology.</p>
+        <p>Developers: Yash Diwate, Anush Gajbiye, Mrityunjay Dwivedi, Nupur Mashskar</p>
+    </footer>
+</body>
+
+</html>

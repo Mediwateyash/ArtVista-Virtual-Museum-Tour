@@ -1,0 +1,42 @@
+<div class="admin-container">
+    <h1>Edit Artifact</h1>
+    <form action="/admin/artifacts/<%= artifact._id %>?_method=PUT" method="POST" class="admin-form">
+        <div class="form-group">
+            <label>Artifact Name</label>
+            <input type="text" name="name" value="<%= artifact.name %>" required>
+        </div>
+        <div class="form-group">
+            <label>Image URL</label>
+            <input type="url" name="imageUrl" value="<%= artifact.imageUrl %>" required>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="4" required><%= artifact.description %></textarea>
+        </div>
+        <div class="form-group">
+            <label>Period</label>
+            <input type="text" name="period" value="<%= artifact.period %>" required>
+        </div>
+        <div class="form-group">
+            <label>Museum</label>
+            <select name="museumId" required>
+                <% museums.forEach(museum=> { %>
+                    <option value="<%= museum._id %>" <%=artifact.museumId.toString()===museum._id.toString()
+                        ? 'selected' : '' %>><%= museum.name %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Section</label>
+            <select name="sectionId" required>
+                <% sections.forEach(section=> { %>
+                    <option value="<%= section._id %>" <%=artifact.sectionId.toString()===section._id.toString()
+                        ? 'selected' : '' %>><%= section.name %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <button type="submit" class="btn-primary">Update Artifact</button>
+    </form>
+</div>

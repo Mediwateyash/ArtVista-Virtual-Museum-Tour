@@ -1,0 +1,65 @@
+<div class="success-container">
+    <div class="success-icon">✅</div>
+    <h1>Ticket Booked Successfully!</h1>
+    <p>Your booking has been confirmed.</p>
+
+    <div class="booking-details">
+        <p><strong>Booking ID:</strong>
+            <%= booking.bookingId %>
+        </p>
+        <p><strong>Museum:</strong>
+            <%= booking.museumId.name %>
+        </p>
+        <p><strong>Date:</strong>
+            <%= booking.visitDate.toDateString() %>
+        </p>
+        <p><strong>Amount Paid:</strong> ₹<%= booking.totalAmount %>
+        </p>
+    </div>
+
+    <div class="action-buttons">
+        <a href="/bookings/download/<%= booking._id %>" class="btn-primary">Download Ticket (PDF)</a>
+        <a href="/" class="btn-secondary">Back to Home</a>
+    </div>
+</div>
+
+<style>
+    .success-container {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 3rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .success-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    .success-container h1 {
+        color: #2e7d32;
+        margin-bottom: 1rem;
+    }
+
+    .booking-details {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+        text-align: left;
+    }
+
+    .booking-details p {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+</style>

@@ -1,0 +1,48 @@
+<div class="admin-container">
+    <div class="header-actions">
+        <h1>Manage Artifacts</h1>
+        <a href="/admin/artifacts/add" class="btn-primary">Add New Artifact</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Museum</th>
+                    <th>Section</th>
+                    <th>Period</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% artifacts.forEach(artifact=> { %>
+                    <tr>
+                        <td><img src="<%= artifact.imageUrl %>" alt="<%= artifact.name %>" class="thumb"></td>
+                        <td>
+                            <%= artifact.name %>
+                        </td>
+                        <td>
+                            <%= artifact.museumId ? artifact.museumId.name : 'N/A' %>
+                        </td>
+                        <td>
+                            <%= artifact.sectionId ? artifact.sectionId.name : 'N/A' %>
+                        </td>
+                        <td>
+                            <%= artifact.period %>
+                        </td>
+                        <td>
+                            <a href="/admin/artifacts/edit/<%= artifact._id %>" class="btn-sm edit">Edit</a>
+                            <form action="/admin/artifacts/<%= artifact._id %>?_method=DELETE" method="POST"
+                                style="display:inline;">
+                                <button type="submit" class="btn-sm delete"
+                                    onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

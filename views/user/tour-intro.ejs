@@ -1,0 +1,68 @@
+<div class="tour-intro-container">
+    <div class="intro-header">
+        <h1>Welcome to the Virtual Tour</h1>
+        <h2>
+            <%= museum.name %>
+        </h2>
+        <p>Select a section to begin your journey through history and art.</p>
+    </div>
+
+    <div class="section-grid">
+        <% sections.forEach(section=> { %>
+            <div class="section-card">
+                <h3>
+                    <%= section.name %>
+                </h3>
+                <a href="/tour/start/<%= museum._id %>/<%= section._id %>" class="btn-primary">Enter Section</a>
+            </div>
+            <% }) %>
+    </div>
+</div>
+
+<style>
+    .tour-intro-container {
+        padding: 3rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .intro-header {
+        margin-bottom: 3rem;
+    }
+
+    .intro-header h1 {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .intro-header h2 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .section-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .section-card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .section-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .section-card h3 {
+        margin-bottom: 1.5rem;
+        color: var(--secondary-color);
+    }
+</style>
