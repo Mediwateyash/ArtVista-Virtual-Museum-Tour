@@ -16,6 +16,11 @@
 <body>
     <nav class="navbar">
         <div class="logo">ArtVista</div>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <% if (typeof user !=='undefined' && user) { %>
@@ -58,6 +63,7 @@
         </div>
     </footer>
 
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
