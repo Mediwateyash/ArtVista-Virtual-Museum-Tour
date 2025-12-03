@@ -24,6 +24,8 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <% if (typeof user !=='undefined' && user) { %>
+                <li><span class="nav-user" style="color: var(--primary-color); font-weight: 500;">Hi, <%= user.name %>
+                            </span></li>
                 <li><a href="/museums">Museums</a></li>
                 <% if (user.isAdmin) { %>
                     <li><a href="/admin/dashboard">Admin Dashboard</a></li>

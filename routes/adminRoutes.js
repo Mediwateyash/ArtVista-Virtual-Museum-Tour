@@ -35,4 +35,9 @@ router.delete('/artifacts/:id', adminController.deleteArtifact);
 router.get('/bookings', adminController.getBookings);
 router.put('/bookings/:id/visited', adminController.markVisited);
 
+// Users
+router.get('/users', adminController.getUsers);
+router.put('/users/:id/make-admin', adminController.makeAdmin);
+router.delete('/users/:id', adminController.deleteUser);
+
 module.exports = router;

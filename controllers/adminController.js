@@ -191,10 +191,42 @@ const markVisited = async (req, res) => {
     }
 };
 
+// User Management
+const getUsers = async (req, res) => {
+    try {
+        const users = await User.find().sort({ createdAt: -1 });
+        res.render('admin/users/index', { users });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching users');
+    }
+};
+
+const makeAdmin = async (req, res) => {
+    try {
+        await User.findByIdAndUpdate(req.params.id, { isAdmin: true });
+        res.redirect('/admin/users');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating user role');
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect('/admin/users');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error deleting user');
+    }
+};
+
 module.exports = {
     getDashboard,
     getMuseums, getAddMuseum, postAddMuseum, getEditMuseum, putEditMuseum, deleteMuseum,
     getSections, getAddSection, postAddSection, getEditSection, putEditSection, deleteSection,
     getArtifacts, getAddArtifact, postAddArtifact, getEditArtifact, putEditArtifact, deleteArtifact,
-    getBookings, markVisited
+    getBookings, markVisited,
+    getUsers, makeAdmin, deleteUser
 };
